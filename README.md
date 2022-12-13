@@ -11,7 +11,7 @@ The project follows the following guidelines:
     0. Then we write specs to describe components, events and states.
     0. Then we write tests before we write implementation code, 
     0. Then we write basic code to satisfy our tests, 
-    0. Then we introduce and helpers to improve code and functionality without breaking the tests,
+    0. Then we introduce tools, packages and helpers to improve code and functionality without breaking the tests,
     0. Then we format and beautify the project -- ___after___ we know for sure that everything works.
 
 2. We care about our vision and our features, not about our tools. Tools and frameworks help us to implement features in a better way. That's the only value they have.

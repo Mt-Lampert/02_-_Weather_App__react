@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/poppins": "^4.5.10",
+    "bulma": "^0.9.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.56.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

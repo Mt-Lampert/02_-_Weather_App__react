@@ -1,11 +1,18 @@
 # TO DO NEXT
 
-- [ ] Install the Testing Environment
 - [ ] Write the features and the wireframes
 - [ ] Outline the specs as pending Unit Tests.
 
 
 # Journal
+
+## 2022-12-13 21:47
+
+Finished the following Todo items:
+
+- [x] ~~Install the Testing Environment~~
+
+Went smoothly with the help of [Robin Wieruch](https://www.robinwieruch.de/vitest-react-testing-library/).
 
 ## 2022-12-13 20:15
 

@@ -1,14 +1,14 @@
 import { rest } from "msw";
 
-const urlGetOK = 'api/collections/weather/records?filter=(place~"London")';
+const urlGetOK = '/api/collections/weather/records';
 const urlGet404 = 'api/collections/weather/records?filter=(place~"Oslo")';
 
 export const handlers = [
-  rest.get(urlGetOK, (req, res, ctx) => {
+  rest.all('http://127.0.0.1/api/', (req, res, ctx) => {
     
     // TODO:
     // use req.url.searchParams to distinguish between 'place~"London"' and 'place~"Oslo"'
-    
+    console.log("I'm inside the msw GET handler.")
     
     return res(
       ctx.status(200),

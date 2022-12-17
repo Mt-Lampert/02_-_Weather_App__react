@@ -3,9 +3,28 @@
 - [ ] Write the features and the wireframes
 - [ ] Outline the specs as pending Unit Tests.
 
-
 # Journal
-## 2022-12-17
+
+## 2022-12-17 18:15
+
+One more correction was necessary: When testing worked earlier this day, it worked because I had the backend pocketbase server running, not msw. When I took pocketbase out of the game, `fetch()` failed. The component dump showed:
+
+```xml
+  <div>
+    <h1>
+      This is an error!
+    </h1>
+    <p>
+      fetch failed
+    </p>
+  </div>
+```
+
+I found the solution in  [this article](https://markus.oberlehner.net/blog/using-mock-service-worker-with-vitest-and-fetch/) by Markus Oberlehner. `fetch()` needs to be polyfilled in NodeJS in order to work as expected (at least in the stable version of NodeJS I am using). After updating `/src/tests/setup.js`, the test was passing.
+
+
+
+## 2022-12-17: 11:30
 
 Took me 4 days to implement a working solution for a GET request using `fetch()` with search parameters and to test it using `@testing-framework/user-event` and the [Mock Service Worker (msw)](https://mswjs.io). So there were three possibilities where something could go wrong.
 
@@ -13,9 +32,13 @@ At the end of the day everything could be solved following the official document
 
 ```javascript
 const city = "London";
-const myURI = encodeURI(`http://127.0.0.1:8090/api/collections/weather/records?filter=(place~"${city}")`);
+const myURI = encodeURI(
+  `http://127.0.0.1:8090/api/collections/weather/records?filter=(place~"${city}")`
+);
 
-fetch(myURI).then((res) => { /* ... */});
+fetch(myURI).then((res) => {
+  /* ... */
+});
 ```
 
 Without this, the double quotes in the `filter` parameter led to an erroneous url that sabotaged parsing in `msw`. The trouble was tat `msw` doesn't give a damn about giving helpful error messages in a case like this.
@@ -47,7 +70,6 @@ The hardest struggle was installing the Poppins font into the project. The follo
 // See https://fontsource.org/ for details
 @import "@fontsource/poppins/index.css";
 ```
-
 
 ## 2022-12-14 10:45
 

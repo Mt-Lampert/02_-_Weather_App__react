@@ -1,8 +1,5 @@
 # TO DO NEXT
 
-- [x] ~~Write and test the MainCenter.jsx component~~
-- [ ] adjust the _msw_ GET route for failure
-- [ ] Write and test the MainError.jsx component
 - [ ] Write and test the Footer.jsx component
 - [ ] Format and beautify the App.jsx component
 - [ ] Format and beautify the MainError.jsx component
@@ -11,6 +8,16 @@
 - [ ] Refactor the state management in `App.jsx` in favor of `useReducer()` over 5 `useState()` calls.
 
 # Journal
+
+## 2022-12-18: 17:15
+
+Finished the following TODOs:
+
+- [x] ~~Write and test the MainCenter.jsx component~~
+- [x] ~~adjust the _msw_ GET route for failure~~
+- [x] ~~Write and test the MainError.jsx component~~
+
+Nothing special to report. Works like a Swiss Watch.
 
 ## 2022-12-17 18:15
 

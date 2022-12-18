@@ -23,7 +23,7 @@ function Main() {
         if (res.ok) return res.json();
 
         // implicit else
-        throw new Error(`${res.status}: nothing found!`);
+        throw new Error(`${res.status}: Nothing found!`);
       })
       .then((data) => {
         // console.log("Query successful!")

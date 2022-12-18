@@ -46,18 +46,60 @@ describe("Interaction", () => {
       // screen.debug()
     });
 
-    it.skip("has a weather symbol figure");
+    it("has a weather symbol figure", async () => {
+      const user = userEvent.setup();
+      render(<Main />);
+      const input = await screen.findByPlaceholderText("Enter a city");
+      expect(input).toBeInTheDocument();
+      const button = await screen.findByRole("button", { name: "Lookup" });
+      await user.type(input, "London");
+      await user.click(button);
+      const svg = await screen.findByAltText(/symbol/i);
+      expect(svg).toHaveAttribute(
+        "src",
+        expect.stringContaining("overcast.svg")
+      );
+    });
 
-    it.skip("has a weather description");
+    it("has a weather description", async () => {
+      const user = userEvent.setup();
+      render(<Main />);
+      const input = await screen.findByPlaceholderText("Enter a city");
+      expect(input).toBeInTheDocument();
+      const button = await screen.findByRole("button", { name: "Lookup" });
+      await user.type(input, "London");
+      await user.click(button);
+      const temperature = await screen.findByText("1");
+      expect(temperature).toBeInTheDocument();
+    });
 
     it.skip("has a footer section");
   });
+
   describe("finding no results", () => {
-    it.skip("Has a 'center' section");
+    it("has an Error heading", async () => {
+      const user = userEvent.setup();
+      render(<Main />);
+      const input = await screen.findByPlaceholderText("Enter a city");
+      expect(input).toBeInTheDocument();
+      const button = await screen.findByRole("button", { name: "Lookup" });
+      await user.type(input, "Oslo");
+      await user.click(button);
+      const errorHeading = screen.getByRole("heading", { name: /Error/i });
+      expect(errorHeading).toBeInTheDocument();
+    });
 
-    it.skip("has an Error container");
-
-    it.skip("has an error message");
+    it("has an error message", async () => {
+      const user = userEvent.setup();
+      render(<Main />);
+      const input = await screen.findByPlaceholderText("Enter a city");
+      expect(input).toBeInTheDocument();
+      const button = await screen.findByRole("button", { name: "Lookup" });
+      await user.type(input, "Oslo");
+      await user.click(button);
+      const errorMsg = screen.getByText("404: Nothing found!");
+      expect(errorMsg).toBeInTheDocument();
+    });
 
     it.skip("has no footer section");
   });

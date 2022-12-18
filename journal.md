@@ -1,6 +1,7 @@
 # TO DO NEXT
 
-- [ ] Write and test the MainCenter.jsx component
+- [x] ~~Write and test the MainCenter.jsx component~~
+- [ ] adjust the _msw_ GET route for failure
 - [ ] Write and test the MainError.jsx component
 - [ ] Write and test the Footer.jsx component
 - [ ] Format and beautify the App.jsx component

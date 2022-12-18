@@ -3,9 +3,9 @@ import MainCenter from "./MainCenter";
 
 describe("MainCenter", () => {
   beforeEach(() => {
-    render(<MainCenter city="London, UK" sky="sunny" temperature="22,3" />);
-
+    render(<MainCenter place="London, UK" sky="sunny" temperature="22,3" />);
   })
+
   it("has a weather image", () => {
     const image = screen.getByAltText(/sunny/i);
     expect(image).toBeInTheDocument();

@@ -41,7 +41,7 @@ function MainCenter(props) {
       <figure>
         <img src={"./assets/" +getSVGfor(props.sky)} alt={props.sky + " weather Symbol"} />
       </figure>
-      <p>{props.city}</p>
+      <p>{props.place}</p>
       <p>{props.temperature}</p>
     </div>
   );

@@ -15,11 +15,15 @@ function Main() {
   function getData() {
     const city = suchfeld.current.value;
     fetch(
-      encodeURI(`http://127.0.0.1:8090/api/collections/weather/records?filter=(place~"${city}")`)
+      encodeURI(
+        `http://127.0.0.1:8090/api/collections/weather/records?filter=(place~"${city}")`
+      )
     )
       .then((res) => {
         if (res.ok) return res.json();
-        else throw new Error(`${res.status}: nothing found!`);
+
+        // implicit else
+        throw new Error(`${res.status}: nothing found!`);
       })
       .then((data) => {
         // console.log("Query successful!")
@@ -46,7 +50,13 @@ function Main() {
         </button>
 
         <div className="center">
-          {mainstate === "success" && <MainCenter data={myData} />}
+          {mainstate === "success" && (
+            <MainCenter
+              place={myData.place}
+              sky={myData.sky}
+              temperature={myData.temperature}
+            />
+          )}
           {mainstate === "fail" && <MainError message={myError} />}
         </div>
       </div>

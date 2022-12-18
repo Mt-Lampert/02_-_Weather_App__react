@@ -41,9 +41,7 @@ describe("Interaction", () => {
       const button = await screen.findByRole("button", { name: "Lookup" });
       await user.type(input, "London");
       await user.click(button);
-      const successHeader = await screen.findByRole("heading", {
-        name: /success!/i,
-      });
+      const successHeader = await screen.findByText("London, UK");
       expect(successHeader).toBeInTheDocument;
       // screen.debug()
     });

@@ -46,7 +46,7 @@ describe("Interaction", () => {
       // screen.debug()
     });
 
-    it("has a weather symbol figure", async () => {
+    it("has elements with a weather symbol figure", async () => {
       const user = userEvent.setup();
       render(<Main />);
       const input = await screen.findByPlaceholderText("Enter a city");
@@ -54,12 +54,13 @@ describe("Interaction", () => {
       const button = await screen.findByRole("button", { name: "Lookup" });
       await user.type(input, "London");
       await user.click(button);
-      const svg = await screen.findByAltText(/symbol/i);
-      expect(svg).toHaveAttribute(
+      const svgs = await screen.findByAltText(/weather symbol/i);
+      expect(svgs).toHaveAttribute(
         "src",
         expect.stringContaining("overcast.svg")
       );
-    });
+    
+      });
 
     it("has a weather description", async () => {
       const user = userEvent.setup();
@@ -73,7 +74,17 @@ describe("Interaction", () => {
       expect(temperature).toBeInTheDocument();
     });
 
-    it.skip("has a footer section");
+    it("has a footer section", async () => {
+      const user = userEvent.setup();
+      render(<Main />);
+      const input = await screen.findByPlaceholderText("Enter a city");
+      expect(input).toBeInTheDocument();
+      const button = await screen.findByRole("button", { name: "Lookup" });
+      await user.type(input, "London");
+      await user.click(button);
+      const footer = await screen.findByTestId("footer");
+      expect(footer).toBeInTheDocument();
+    });
   });
 
   describe("finding no results", () => {
@@ -101,6 +112,17 @@ describe("Interaction", () => {
       expect(errorMsg).toBeInTheDocument();
     });
 
-    it.skip("has no footer section");
+    it("has no footer section", async () => {
+      const user = userEvent.setup();
+      render(<Main />);
+      const input = await screen.findByPlaceholderText("Enter a city");
+      expect(input).toBeInTheDocument();
+      const button = await screen.findByRole("button", { name: "Lookup" });
+      await user.type(input, "Oslo");
+      await user.click(button);
+      const noFooter =  screen.queryByTestId("footer")
+      expect(noFooter).not.toBeInTheDocument();
+      
+    });
   });
 });

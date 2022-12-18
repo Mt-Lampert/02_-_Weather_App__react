@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 
+import Footer from "./Footer";
 import MainCenter from "./MainCenter";
 import MainError from "./MainError";
 
@@ -59,6 +60,14 @@ function Main() {
           )}
           {mainstate === "fail" && <MainError message={myError} />}
         </div>
+        {mainstate === "success" && (
+          <Footer
+            sky={myData.sky}
+            airPressure={myData.air_pressure}
+            humidity={myData.humidity}
+            wind={myData.wind}
+          />
+        )}
       </div>
     </div>
   );

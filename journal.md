@@ -1,6 +1,5 @@
 # TO DO NEXT
 
-- [ ] Write and test the Footer.jsx component
 - [ ] Format and beautify the App.jsx component
 - [ ] Format and beautify the MainError.jsx component
 - [ ] Format and beautify the MainCenter.jsx component
@@ -8,6 +7,16 @@
 - [ ] Refactor the state management in `App.jsx` in favor of `useReducer()` over 5 `useState()` calls.
 
 # Journal
+
+## 2022-12-18 19:15
+
+Finished this TODO:
+
+- [x] ~~Write and test the Footer.jsx component~~
+
+tests included unit tests and integration tests with `Main.jsx`
+
+
 
 ## 2022-12-18: 17:15
 

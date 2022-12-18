@@ -1,7 +1,13 @@
 # TO DO NEXT
 
-- [ ] Write the features and the wireframes
-- [ ] Outline the specs as pending Unit Tests.
+- [ ] Write and test the MainCenter.jsx component
+- [ ] Write and test the MainError.jsx component
+- [ ] Write and test the Footer.jsx component
+- [ ] Format and beautify the App.jsx component
+- [ ] Format and beautify the MainError.jsx component
+- [ ] Format and beautify the MainCenter.jsx component
+- [ ] Format and beautify the Footer.jsx component
+- [ ] Refactor the state management in `App.jsx` in favor of `useReducer()` over 5 `useState()` calls.
 
 # Journal
 

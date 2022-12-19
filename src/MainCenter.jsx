@@ -1,4 +1,5 @@
 import { getSVGfor } from "./helpers";
+import "./MainCenter.scss"
 
 function MainCenter(props) {
   // Outline:
@@ -12,12 +13,12 @@ function MainCenter(props) {
   //
 
   return (
-    <div>
+    <div className="center-section">
       <figure>
-        <img src={"./assets/" +getSVGfor(props.sky)} alt={props.sky + " weather Symbol"} />
+        <img src={"./" +getSVGfor(props.sky)} alt={props.sky + " weather Symbol"} />
       </figure>
-      <p>{props.place}</p>
-      <p>{props.temperature}</p>
+      <p className="title">{props.place}</p>
+      <p className="title">{props.temperature}&deg;</p>
     </div>
   );
 }

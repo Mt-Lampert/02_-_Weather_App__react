@@ -1,0 +1,25 @@
+.footer-card {
+  .footer-card-image{
+    height: 48px;
+    text-align: center;
+    
+  }
+
+  figure{
+    display: inline-block;
+    margin: 0 auto;
+    vertical-align: bottom;
+    height: 70px;
+    width: 70px;
+    
+    > img {
+      max-height: 50px;
+      // max-width: 50px;
+    }
+
+  }
+  .footer-card-content {
+    padding-top: 1rem;
+  }
+
+}

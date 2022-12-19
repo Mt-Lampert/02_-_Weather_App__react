@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import Footer from "./Footer";
 import MainCenter from "./MainCenter";
 import MainError from "./MainError";
+import "./Main.scss"
 
 const mainStates = ["idle", "loading", "success", "fail"];
 
@@ -23,11 +24,14 @@ function Main() {
       .then((res) => {
         if (res.ok) return res.json();
 
-        // implicit else
+        // console.log("res seems defined")
         throw new Error(`${res.status}: Nothing found!`);
       })
       .then((data) => {
         // console.log("Query successful!")
+        if(data.items.length === 0)
+          throw new Error(`${res.status}: Nothing found!`);
+
         setMainstate("success");
         setMyData(data.items[0]);
       })
@@ -38,18 +42,23 @@ function Main() {
       });
   }
   return (
-    <div data-testid="main">
-      <div data-testid="heading">
-        <input
-          type="text"
-          className="input"
-          placeholder="Enter a city"
-          ref={suchfeld}
-        />
-        <button className="button is-info" onClick={getData}>
-          Lookup
-        </button>
-
+    <div className="main" data-testid="main">
+      <div className="heading container" data-testid="heading">
+        <div className="columns search-field">
+          <div className="column is-four-fifths">
+            <input
+              type="text"
+              className="input"
+              placeholder="Enter a city"
+              ref={suchfeld}
+            />
+          </div>
+          <div className="column">
+            <button className="button is-info" onClick={getData}>
+              Lookup
+            </button>
+          </div>
+        </div>
         <div className="center">
           {mainstate === "success" && (
             <MainCenter
@@ -60,7 +69,8 @@ function Main() {
           )}
           {mainstate === "fail" && <MainError message={myError} />}
         </div>
-        {mainstate === "success" && (
+      </div>
+      {mainstate === "success" && (
           <Footer
             sky={myData.sky}
             airPressure={myData.air_pressure}
@@ -68,7 +78,6 @@ function Main() {
             wind={myData.wind}
           />
         )}
-      </div>
     </div>
   );
 }

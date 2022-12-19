@@ -70,7 +70,7 @@ describe("Interaction", () => {
       const button = await screen.findByRole("button", { name: "Lookup" });
       await user.type(input, "London");
       await user.click(button);
-      const temperature = await screen.findByText("1");
+      const temperature = await screen.findByText(/^1\b/);
       expect(temperature).toBeInTheDocument();
     });
 

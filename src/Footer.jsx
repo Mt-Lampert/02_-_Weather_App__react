@@ -1,5 +1,6 @@
 import { getSVGfor } from "./helpers";
 import FooterCard from "./FooterCard";
+import "./Footer.scss";
 
 /*
 type props = {
@@ -13,11 +14,17 @@ type props = {
 
 function Footer(props) {
   return (
-    <div data-testid="footer">
-      <FooterCard desc={props.sky} svg={getSVGfor(props.sky)} type="sky" />
-      <FooterCard desc={props.air_pressure} svg="barometer.svg" type="air pressure"/>
-      <FooterCard desc={props.humidity} svg="humidity.svg" type="humidity"/>
-      <FooterCard desc={props.wind} svg="wind.svg" type="wind"/>
+    <div className="page-footer" data-testid="footer">
+      <div className="columns is-centered">
+        <FooterCard desc={props.sky} svg={getSVGfor(props.sky)} type="sky" />
+        <FooterCard
+          desc={props.airPressure}
+          svg="barometer.svg"
+          type="air pressure"
+        />
+        <FooterCard desc={props.humidity} svg="humidity.svg" type="humidity" />
+        <FooterCard desc={props.wind} svg="wind.svg" type="wind" />
+      </div>
     </div>
   );
 }

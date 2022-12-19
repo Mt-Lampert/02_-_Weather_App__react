@@ -18,7 +18,7 @@ describe("MainCenter", () => {
   });
 
   it("has a temperature label", () => {
-    const tempTag = screen.getByText("22,3");
+    const tempTag = screen.getByText(/22,3/);
     expect(tempTag).toBeInTheDocument();
   });
 });

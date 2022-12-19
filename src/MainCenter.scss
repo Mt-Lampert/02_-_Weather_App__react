@@ -1,0 +1,14 @@
+$center-max-width: 250px;
+
+.center-section {
+  margin: 0 auto;
+  padding-top: 5rem;
+  max-width: $center-max-width;
+  text-align: center;
+
+  figure {
+    max-width: $center-max-width;
+    padding-bottom: 1.5rem;
+    text-align: center;
+  }
+}

@@ -29,7 +29,7 @@ function Main() {
       .then((data) => {
         // console.log("Query successful!")
         setMainstate("success");
-        setMyData(data);
+        setMyData(data.items[0]);
       })
       .catch((error) => {
         // console.log("Query failed!")

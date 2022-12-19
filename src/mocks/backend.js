@@ -14,12 +14,16 @@ export const handlers = [
         return res(
           ctx.status(200),
           ctx.json({
+            items: [
+              {
             air_pressure: 1007,
             humidity: 91,
             place: "London, UK",
             sky: "overcast",
             temperature: 1,
             wind: 4,
+              },
+            ],
           })
         );
       }

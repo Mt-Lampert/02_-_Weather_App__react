@@ -4,6 +4,16 @@
 
 # Journal
 
+## 2022-20-24 07:00
+
+It's time for one last refactoring: Clearing up state in `Main.jsx`. At the moment, state is too cluttered there to be likable.
+
+What I'm about to do is //reducing// ;) the state with `useReducer()`.
+
+### __UPDATE 08:25:__
+
+All - went - finally - well. I did the refactoring, reduced the code, reduced the clutter. Soooo nice!
+
 ## 2022-12-19 16:30
 
 Finished these TODOs:

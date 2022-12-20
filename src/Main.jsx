@@ -1,17 +1,14 @@
-import { useState, useRef } from "react";
+import { useReducer, useRef } from "react";
 
 import Footer from "./Footer";
 import MainCenter from "./MainCenter";
 import MainError from "./MainError";
-import "./Main.scss"
+import { mainState, rdReducer } from "./mainReducer";
+import "./Main.scss";
 
-const mainStates = ["idle", "loading", "success", "fail"];
 
 function Main() {
-  const [mainstate, setMainstate] = useState(mainStates[0]);
-  const [myData, setMyData] = useState({});
-  const [myError, setMyError] = useState("");
-
+  const [myState, dispatch] = useReducer(rdReducer, mainState);
   const suchfeld = useRef();
 
   function getData() {
@@ -23,22 +20,16 @@ function Main() {
     )
       .then((res) => {
         if (res.ok) return res.json();
-
-        // console.log("res seems defined")
-        throw new Error(`${res.status}: Nothing found!`);
+        // implicit else
+        throw new Error("404: Nothing found!");
       })
       .then((data) => {
-        // console.log("Query successful!")
-        if(data.items.length === 0)
-          throw new Error(`${res.status}: Nothing found!`);
-
-        setMainstate("success");
-        setMyData(data.items[0]);
+        if (data.items.length === 0) throw new Error("404: Nothing found!");
+        // implicit else
+        dispatch({ type: "success", payload: data.items[0] });
       })
       .catch((error) => {
-        // console.log("Query failed!")
-        setMainstate("fail");
-        setMyError(error.message);
+        dispatch({ type: "fail", payload: error.message });
       });
   }
   return (
@@ -60,24 +51,24 @@ function Main() {
           </div>
         </div>
         <div className="center">
-          {mainstate === "success" && (
+          {myState.state === "success" && (
             <MainCenter
-              place={myData.place}
-              sky={myData.sky}
-              temperature={myData.temperature}
+              place={myState.data.place}
+              sky={myState.data.sky}
+              temperature={myState.data.temperature}
             />
           )}
-          {mainstate === "fail" && <MainError message={myError} />}
+          {myState.state === "fail" && <MainError message={myState.error} />}
         </div>
       </div>
-      {mainstate === "success" && (
-          <Footer
-            sky={myData.sky}
-            airPressure={myData.air_pressure}
-            humidity={myData.humidity}
-            wind={myData.wind}
-          />
-        )}
+      {myState.state === "success" && (
+        <Footer
+          sky={myState.data.sky}
+          airPressure={myState.data.air_pressure}
+          humidity={myState.data.humidity}
+          wind={myState.data.wind}
+        />
+      )}
     </div>
   );
 }

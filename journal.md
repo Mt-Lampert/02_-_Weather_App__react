@@ -1,6 +1,5 @@
 # TO DO NEXT
 
-- [ ] Refactor the state management in `App.jsx` in favor of `useReducer()` over 5 `useState()` calls.
 
 # Journal
 
@@ -11,6 +10,8 @@ It's time for one last refactoring: Clearing up state in `Main.jsx`. At the mome
 What I'm about to do is //reducing// ;) the state with `useReducer()`.
 
 ### __UPDATE 08:25:__
+
+- [x] ~~Refactor the state management in `App.jsx` in favor of `useReducer()` over 5 `useState()` calls.~~
 
 All - went - finally - well. I did the refactoring, reduced the code, reduced the clutter. Soooo nice!
 

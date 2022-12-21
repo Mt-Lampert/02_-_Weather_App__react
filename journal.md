@@ -21,7 +21,7 @@ Finished these TODOs:
 
 - [x] ~~Format and beautify the App.jsx component~~
 - [x] ~~Format and beautify the MainError.jsx component~~
-- [x] ~~Format and beautify the MainCenter.jsx component~~
+- [x] ~~Format and beautify the MainCenter.jsx component~~S!Sc~vC667OqM!dS!Sc~vC667OqM!d
 - [x] ~~Format and beautify the Footer.jsx component~~
 
 Was a fair load of work and labor. But I did it again, and Rowna was impressed. Bulma wasn't a big help this time, but the design wasn't everyday either.
